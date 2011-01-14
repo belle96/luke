@@ -143,9 +143,15 @@ public class AnalyzerToolPlugin extends LukePlugin {
       if (attClass.startsWith("org.apache.lucene.")) {
         attClass = cl.getSimpleName();
       }
+      if (attClass.startsWith("com.github.sspinc.couchdb.lucene.")) {
+        attClass = cl.getSimpleName();
+      }
       Attribute att = as.getAttribute(cl);
       String implClass = att.getClass().getName();
       if (implClass.startsWith("org.apache.lucene.")) {
+        implClass = att.getClass().getSimpleName();
+      }
+      if (implClass.startsWith("com.github.sspinc.couchdb.lucene.")) {
         implClass = att.getClass().getSimpleName();
       }
       Object r = app.create("row");
